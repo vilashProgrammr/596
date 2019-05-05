@@ -116,6 +116,16 @@ body {
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
+
+@media (max-width: 585px) {
+  .profile-row .dp .dp-arc-outer {
+    left: -51px;
+  }
+  .profile-row .dp .dp-arc-inner {
+    left: -42px;
+  }
+}
+
 @keyframes rotate-anticlock {
   from {
     transform: rotate(0deg);

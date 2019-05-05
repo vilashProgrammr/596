@@ -23,7 +23,10 @@ export class AppComponent implements OnInit {
   }
   async refreshList() {
     let response : MarvelResponse<Character> = await this._marvelService.getCharacters(this.shown, this.filter);
-    this.characters = response.data.results;
+    this.characters = response.data.results.map(item => {
+      item.thumbnail.path = item.thumbnail.path.replace('http', 'https');
+      return item;
+    });
     this.total = response.data.total;
     this.attribution = response.attributionHTML;
   }

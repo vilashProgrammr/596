@@ -1,10 +1,10 @@
 body {
   margin:0px;
   font-family: 'Orbitron', sans-serif;
-  color: #ecfcfb;
-  text-shadow: 0px 0px 4px #12a0a0;
+  color: #222;
+  text-shadow: 0px 0px 4px #ccc;
   letter-spacing: 1px;
-  background-color: #0A2129;
+  background: #fff;
 }
 .text-green {
   color: green;
@@ -26,26 +26,26 @@ body {
 .form-group input,
 .form-group select {
   font-family: 'Orbitron', sans-serif;
-  color: #fff;
-  background-color: #0A2129;
-  box-shadow: 0px 0px 3px 1px #12a0a0, inset 0px 0px 3px 1px #12a0a0;
-  border: 1px solid rgb(97, 245, 245);
+  color: #222;
+  background-color: #fff;
+  /*box-shadow: 0px 0px 3px 1px #f0141e, inset 0px 0px 3px 1px #f0141e;*/
+  border: 3px solid #f0141e;
   padding: 10px 15px;
 }
 .id-card-wrapper {
   padding: 10px 15px;
-  background-color: #091214;
+  background-color: #fff;
   display: inline-flex;
 }
 .id-card {
   flex-basis: 100%;
   max-width: 30em;
-  border: 1px solid rgb(97, 245, 245);
   margin: auto;
-  color: #fff;
+  color: #222;
   padding: 1em;
-  background-color: #0A2129;
-  box-shadow: 0px 0px 3px 1px #12a0a0, inset 0px 0px 3px 1px #12a0a0;
+  background-color: #f1f1f1;
+  /*box-shadow: 0px 0px 3px 1px #f0141e, inset 0px 0px 3px 1px #f0141e;*/
+  border: 3px solid #f0141e;
 }
 
 .profile-row {
@@ -72,7 +72,7 @@ body {
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
-  box-shadow: 0px 0px 4px 3px #12a0a0;
+  box-shadow: 0px 0px 4px 3px #e62429;
 }
 .profile-row .desc {
   padding: 1em;
@@ -83,7 +83,7 @@ body {
   width: 170px;
   height: 170px;
   border: 6px solid transparent;
-  border-top-color: #0AE0DF;
+  border-top-color: #e62429;
   border-radius: 50%;
   top: -15px;
   left: -22px;
@@ -106,7 +106,7 @@ body {
   width: calc(150px + 40px);
   height: calc(150px + 40px);
   border: 6px solid transparent;
-  border-bottom-color: #0AE0DF;
+  border-bottom-color: #e62429;
   border-radius: 50%;
   top: -22px;
   left: -31px;
@@ -137,8 +137,8 @@ body {
 
 .profile-row .desc {
   font-family: 'Orbitron', sans-serif;
-  color: #ecfcfb;
-  text-shadow: 0px 0px 4px #12a0a0;
+  color: #222;
+  text-shadow: 0px 0px 4px #ccc;
   letter-spacing: 1px;
 }
 .profile-row .desc h1 {

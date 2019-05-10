@@ -22,6 +22,7 @@ body {
 }
 .form-group {
   display: inline-block;
+  margin-bottom: 5px;
 }
 .form-group input,
 .form-group select {

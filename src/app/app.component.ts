@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MarvelService } from './services/marvel.service';
-import { Character } from './models/character.model';
+import { Comic } from './models/comic.model';
 import { MarvelResponse } from './models/marvel.model';
 
 @Component({
@@ -11,9 +11,9 @@ import { MarvelResponse } from './models/marvel.model';
   ]
 })
 export class AppComponent implements OnInit {
-  title: string = "Search your Marvel SuperHero";
+  title: string = "Search your Marvel Comics";
   attribution : string;
-  characters : Character[] = [];
+  comics : Comic[] = [];
   shown : number = 10;
   total : number = null;
   filter : string = "spider";
@@ -22,8 +22,8 @@ export class AppComponent implements OnInit {
     await this.refreshList();
   }
   async refreshList() {
-    // let response : MarvelResponse<Character> = await this._marvelService.getCharacters(this.shown, this.filter);
-    // this.characters = response.data.results.map(item => {
+    let response : MarvelResponse<Comic> = await this._marvelService.getComics(this.shown, this.filter);
+    // this.comics = response.data.results.map(item => {
     //   item.thumbnail.path = item.thumbnail.path.replace('http', 'https');
     //   return item;
     // });

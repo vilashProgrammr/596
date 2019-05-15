@@ -1,6 +1,6 @@
-export class Character {
+export class Comic {
     public id : number;
-    public name : string;
+    public title : string;
     public description : string;
     public thumbnail : Thumbnail;
 }

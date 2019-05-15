@@ -2,12 +2,12 @@ import 'rxjs/add/operator/toPromise';
 import { Md5 } from 'ts-md5/dist/md5'
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { Character } from '../models/character.model';
+import { Comic } from '../models/comic.model';
 import { MarvelResponse } from '../models/marvel.model';
 
 @Injectable()
 export class MarvelService {
-    private _marvelCharacterUrl : string = "https://gateway.marvel.com:443/v1/public/characters";
+    private _marvelComicUrl : string = "https://gateway.marvel.com:443/v1/public/comics";
     private _publicKey : string = "c4b5296bc35888971631d22848916410";
     private _privateKey : string = "fddd97e16368b2fee706a1f6de69f30f191467d3";
     constructor(private _httpService : Http) {}
@@ -22,12 +22,12 @@ export class MarvelService {
     private getTimeStamp() : string {
         return new Date().valueOf().toString();
     }    
-    public async getCharacters(limit : number = 10, prefix : string = null) : Promise<MarvelResponse<Character>> {
+    public async getComics(limit : number = 10, prefix : string = null) : Promise<MarvelResponse<Comic>> {
         let timeStamp = this.getTimeStamp();
         let hash = this.getHash(timeStamp);
-        let requestUrl = this._marvelCharacterUrl + "?limit=" + limit + "&ts=" + timeStamp + "&apikey=" + this._publicKey + "&hash=" + hash;
+        let requestUrl = this._marvelComicUrl + "?limit=" + limit + "&hasDigitalIssue=true&format=comic&ts=" + timeStamp + "&apikey=" + this._publicKey + "&hash=" + hash;
         if (prefix) {
-            requestUrl += "&nameStartsWith=" + prefix;
+            requestUrl += "&titleStartsWith=" + prefix;
         }
         let response = await this._httpService.get(requestUrl).toPromise();
         return response.json();

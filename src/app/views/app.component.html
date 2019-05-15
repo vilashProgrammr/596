@@ -9,7 +9,7 @@
     <div class="form-group">
         <label for="countInput">Items Shown</label>
         <select class="form-control" id="countInput" name="count" [(ngModel)]="shown" (ngModelChange)="refreshList($event)">
-            <option *ngFor="let i of [5, 10, 15, 20]">
+            <option *ngFor="let i of [20, 50, 100]">
                 {{i}}
             </option>
         </select>
@@ -19,19 +19,17 @@
         {{total}}
     </div>
 </form>
-<div class="id-card-wrapper" *ngFor="let character of characters" >
-  <div class="id-card">
+<div class="id-card-wrapper" >
+  <div class="id-card" *ngFor="let comic of comics">
     <div class="profile-row">
-      <div class="dp">
-        <div class="dp-arc-outer"></div>
-        <div class="dp-arc-inner"></div>
-        <img src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" alt="Card image cap" />
+      <div class="thumbnail">
+        <img src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}" alt="Card image cap" />
       </div>
-      <div class="desc">
-        <h1>{{character.name}}</h1>
-        <p *ngIf="character.description">{{character.description}}</p>
-        <p *ngIf="!character.description">Theres no description found in Marvel Database.</p>
-      </div>
+      <!-- <div class="desc">
+        <h1>{{comic.title}}</h1>
+        <p *ngIf="comic.description">{{comic.description}}</p>
+        <p *ngIf="!comic.description">Theres no description found in Marvel Database.</p>
+      </div> -->
     </div>
   </div>
 </div>

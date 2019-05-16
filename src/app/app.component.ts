@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     this.attribution = response.attributionHTML;
   }
   openModal(index) {
-    this.selectedComic = this.comics[index]
-    this.staticModal.show()
+    // this.selectedComic = this.comics[index]
+    // this.staticModal.show()
   }
 }

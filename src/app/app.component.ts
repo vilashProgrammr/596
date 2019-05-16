@@ -25,15 +25,14 @@ export class AppComponent implements OnInit {
     await this.refreshList();
   }
   async refreshList() {
-    // let response : MarvelResponse<Comic> = await this._marvelService.getComics(this.shown, this.filter);
-    // this.comics = response.data.results.map(item => {
-    //   item.thumbnail.path = item.thumbnail.path.replace('http', 'https');
-    //   return item;
-    // });
-    // this.total = response.data.total;
-    // this.attribution = response.attributionHTML;
+    let response : MarvelResponse<Comic> = await this._marvelService.getComics(this.shown, this.filter);
+    this.comics = response.data.results.map(item => {
+      item.thumbnail.path = item.thumbnail.path.replace('http', 'https');
+      return item;
+    });
+    this.total = response.data.total;
+    this.attribution = response.attributionHTML;
   }
-
   openModal(index) {
     this.selectedComic = this.comics[index]
     this.staticModal.show()

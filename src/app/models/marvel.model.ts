@@ -1,4 +1,4 @@
-import { Character } from './character.model';
+import { Comic } from './comic.model';
 
 export abstract class MarvelResponse<T> {
     public code : number;

@@ -31,7 +31,6 @@ body {
   background-color: #fff;
   /*box-shadow: 0px 0px 3px 1px #2E80B7, inset 0px 0px 3px 1px #2E80B7;*/
   border: 3px solid #2E80B7;
-  padding: 10px 15px;
 }
 .id-card-wrapper {
   display: flex;

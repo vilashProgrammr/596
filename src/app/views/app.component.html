@@ -1,14 +1,14 @@
-<h1 class="display-3 mb-5 title">
+<h1 class="mb-5 title">
     {{title}}
 </h1>
 <form class="filters">
     <div class="form-group">
         <label for="filterInput">Search Filter</label>
-        <input type="text" class="form-control" id="filterInput" name="filter" [(ngModel)]="filter" (ngModelChange)="refreshList($event)" />
+        <input type="text" class="form-control" id="filterInput" name="filter" [(ngModel)]="filter" (blur)="refreshList()" />
     </div>
     <div class="form-group">
         <label for="countInput">Items Shown</label>
-        <select class="form-control" id="countInput" name="count" [(ngModel)]="shown" (ngModelChange)="refreshList($event)">
+        <select class="form-control" id="countInput" name="count" [(ngModel)]="shown" (ngModelChange)="refreshList()">
             <option *ngFor="let i of [20, 50, 100]">
                 {{i}}
             </option>
@@ -20,9 +20,9 @@
     </div>
 </form>
 <div class="id-card-wrapper" >
-  <div class="id-card" *ngFor="let comic of comics">
+  <div class="id-card" *ngFor="let comic of comics; let i = index" [attr.data-index]="i">
     <div class="profile-row">
-      <div class="thumbnail">
+      <div class="thumbnail" (click)="openModal(i)">
         <img src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}" alt="Card image cap" />
       </div>
       <!-- <div class="desc">
@@ -38,3 +38,25 @@
         <p class="mb-0" [innerHTML]="attribution"></p>
     </blockquote>
 </footer>
+
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+   <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+         <h4 class="modal-title pull-left">{{ selectedComic.title }} </h4>
+         <button type="button" class="close pull-right text-white" aria-label="Close" (click)="staticModal.hide()">
+         <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="thumbnail-lg">
+          <img class="w-100" src="{{selectedComic.thumbnail.path}}.{{selectedComic.thumbnail.extension}}" alt="Card image cap" />
+        </div>
+        <div class="description p-2">
+          {{ selectedComic.description }}
+        </div>
+      </div>
+   </div>
+</div>
+</div>

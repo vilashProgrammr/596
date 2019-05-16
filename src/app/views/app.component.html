@@ -22,9 +22,11 @@
         </div>
     </form>
   </div>
-  <div class="backdrop"></div>
 </div>
-<div class="id-card-wrapper" >
+<div *ngIf="isLoading" class="loading h5 text-center py-4">
+  Loading
+</div>
+<div *ngIf="!isLoading" class="id-card-wrapper" >
   <div class="id-card" *ngFor="let comic of comics; let i = index" [attr.data-index]="i">
     <div class="profile-row">
       <div class="thumbnail" (click)="openModal(i)">

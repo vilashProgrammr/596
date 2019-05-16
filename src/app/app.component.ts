@@ -13,6 +13,7 @@ import { MarvelResponse } from './models/marvel.model';
 export class AppComponent implements OnInit {
   title: string = "Search your Marvel Comics";
   attribution : string;
+  isLoading: boolean = false;
   comics : Comic[] = [];
   selectedComic: Comic;
   shown : number = 10;
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
     await this.refreshList();
   }
   async refreshList() {
+    this.isLoading = true
     let response : MarvelResponse<Comic> = await this._marvelService.getComics(this.shown, this.filter);
     this.comics = response.data.results.map(item => {
       item.thumbnail.path = item.thumbnail.path.replace('http', 'https');
@@ -32,6 +34,7 @@ export class AppComponent implements OnInit {
     });
     this.total = response.data.total;
     this.attribution = response.attributionHTML;
+    this.isLoading = false
   }
   openModal(index) {
     // this.selectedComic = this.comics[index]

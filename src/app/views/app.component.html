@@ -4,7 +4,7 @@
 <form class="filters">
     <div class="form-group">
         <label for="filterInput">Search Filter</label>
-        <input type="text" class="form-control" id="filterInput" name="filter" [(ngModel)]="filter" (blur)="refreshList()" />
+        <input type="text" class="form-control" id="filterInput" name="filter" [(ngModel)]="filter" (blur)="refreshList()" (keyup.enter)="refreshList()"/>
     </div>
     <div class="form-group">
         <label for="countInput">Items Shown</label>

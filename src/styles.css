@@ -78,6 +78,7 @@ body {
   width: 100%;
   max-width: 296px;
   display: block;
+  cursor: pointer;
 }
 .profile-row .desc {
   padding: 1em;

@@ -16,7 +16,8 @@ export class AppComponent implements OnInit {
   isLoading: boolean = false;
   comics : Comic[] = [];
   selectedComic: Comic;
-  shown : number = 10;
+  shown : number = 20;
+  year : number = 0;
   total : number = null;
   filter : string = "spider";
   @ViewChild('staticModal') staticModal;
@@ -27,9 +28,11 @@ export class AppComponent implements OnInit {
   }
   async refreshList() {
     this.isLoading = true
-    let response : MarvelResponse<Comic> = await this._marvelService.getComics(this.shown, this.filter);
+    let response : MarvelResponse<Comic> = await this._marvelService.getComics(this.shown, this.filter, this. year);
     this.comics = response.data.results.map(item => {
       item.thumbnail.path = item.thumbnail.path.replace('http', 'https');
+      item.saleDate = item['dates'].find(dateItem => dateItem.type === 'onsaleDate')
+      item.price = item['prices'].find(price => price.type === 'printPrice')
       return item;
     });
     this.total = response.data.total;
@@ -37,7 +40,7 @@ export class AppComponent implements OnInit {
     this.isLoading = false
   }
   openModal(index) {
-    // this.selectedComic = this.comics[index]
-    // this.staticModal.show()
+    this.selectedComic = this.comics[index]
+    this.staticModal.show()
   }
 }

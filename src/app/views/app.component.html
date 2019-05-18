@@ -9,6 +9,14 @@
             <input type="text" class="form-control" id="filterInput" name="filter" [(ngModel)]="filter" (blur)="refreshList()" (keyup.enter)="refreshList()"/>
         </div>
         <div class="form-group">
+            <label for="countInput">Year</label>
+            <select class="form-control" id="yearInput" name="year" [(ngModel)]="year" (ngModelChange)="refreshList()">
+                <option *ngFor="let i of [2010, 2012, 2014, 2016, 2018]">
+                    {{i}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="countInput">Items Shown</label>
             <select class="form-control" id="countInput" name="count" [(ngModel)]="shown" (ngModelChange)="refreshList()">
                 <option *ngFor="let i of [20, 50, 100]">
@@ -55,9 +63,20 @@ tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="tru
         <div class="thumbnail-lg">
           <img class="w-100" src="{{selectedComic.thumbnail.path}}.{{selectedComic.thumbnail.extension}}" alt="Card image cap" />
         </div>
-        <div class="description p-2">
-          <p *ngIf="selectedComic.description">{{ selectedComic.description }}</p>
-          <p *ngIf="!selectedComic.description">Theres no description found in Marvel Database.</p>
+        <div class="content p-2">
+          <p *ngIf="selectedComic.saleDate" class="saleDate">
+            Sale Date: {{ selectedComic.saleDate.date | date }}
+          </p>
+          <p *ngIf="selectedComic.diamondCode" class="diamondCode">
+            DiamondCode: {{ selectedComic.diamondCode }}
+          </p>
+          <p *ngIf="selectedComic.price" class="price">
+            Price: {{ selectedComic.price.price | currency  }}
+          </p>
+          <div class="description">
+            <p *ngIf="selectedComic.description">{{ selectedComic.description }}</p>
+            <p *ngIf="!selectedComic.description">Theres no description found in Marvel Database.</p>
+          </div>
         </div>
       </div>
    </div>

@@ -22,13 +22,16 @@ export class MarvelService {
     private getTimeStamp() : string {
         return new Date().valueOf().toString();
     }    
-    public async getComics(limit : number = 10, prefix : string = null) : Promise<MarvelResponse<Comic>> {
+    public async getComics(limit : number = 10, prefix : string = null, year : number = null) : Promise<MarvelResponse<Comic>> {
         let timeStamp = this.getTimeStamp();
         let hash = this.getHash(timeStamp);
         let requestUrl = this._marvelComicUrl + "?limit=" + limit + "&hasDigitalIssue=true&format=comic&ts=" + timeStamp + "&apikey=" + this._publicKey + "&hash=" + hash;
         if (prefix) {
             requestUrl += "&titleStartsWith=" + prefix;
         }
+        // if (year > 0) {
+        //     requestUrl += "&startYear=" + year;
+        // }
         let response = await this._httpService.get(requestUrl).toPromise();
         return response.json();
     }
